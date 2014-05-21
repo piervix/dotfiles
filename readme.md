@@ -1,5 +1,9 @@
-# Simon's dotfiles.
+# Pier's dotfiles.
 
-For information on how to use these files, I did a post on Nettuts+:
+I'm currently using this dotfile to set my Mac!
 
-<http://net.tutsplus.com/tutorials/tools-and-tips/setting-up-a-mac-dev-machine-from-zero-to-hero-with-dotfiles/>
+To install
+
+<code>source bootstrap.sh</code>
+
+<code>source .osx</code>
