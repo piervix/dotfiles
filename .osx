@@ -22,7 +22,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # sudo pmset -a standbydelay 86400
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=%00
+sudo nvram SystemAudioVolume=" "
 
 # Menu bar: disable transparency
 #defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
@@ -61,7 +61,7 @@ defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 #defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 # Save to disk (not to iCloud) by default
-#defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
@@ -104,7 +104,7 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 #defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -428,23 +428,12 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 #defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 ###############################################################################
-# iTunes (pre-iTunes 11 only)                                                 #
+# iTunes                                                  #
 ###############################################################################
 
-# Disable the iTunes store link arrows
-defaults write com.apple.iTunes show-store-link-arrows -bool false
+# Stop iTunes from responding to the keyboard media keys
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-# Disable the Genius sidebar in iTunes
-defaults write com.apple.iTunes disableGeniusSidebar -bool true
-
-# Disable radio stations in iTunes
-defaults write com.apple.iTunes disableRadio -bool true
-
-# Make ⌘ + F focus the search input in iTunes
-# To use these commands in another language, browse iTunes’s package contents,
-# open `Contents/Resources/your-language.lproj/Localizable.strings`, and look
-# for `kHiddenMenuItemTargetSearch`.
-defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
 ###############################################################################
 # Mail                                                                        #
@@ -560,9 +549,25 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################
 
-# Allow installing user scripts via GitHub or Userscripts.org
-#defaults write com.google.Chrome ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
-#defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://*.github.com/*" "http://userscripts.org/*"
+# Allow installing user scripts via GitHub Gist or Userscripts.org
+defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+
+# Disable the all too sensitive backswipe on trackpads
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+# Disable the all too sensitive backswipe on Magic Mouse
+defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+# Use the system-native print preview dialog
+#defaults write com.google.Chrome DisablePrintPreview -bool true
+#defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+
+# Expand the print dialog by default
+defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
 # SizeUp.app                                                                  #
@@ -623,7 +628,7 @@ defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 ###############################################################################
 
 # Menu bar: Set date and time format e.g. Sun 11 Aug 16:55
-#defaults write com.apple.menuextra.clock DateFormat -string "E MMM d HH:mm"
+defaults write com.apple.menuextra.clock DateFormat -string "E MMM d HH:mm"
 
 # Disable Dock icons bounce animation
 #defaults write com.apple.dock no-bouncing -bool true
