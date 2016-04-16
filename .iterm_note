@@ -1,0 +1,5 @@
+FOR  ACTION         SEND
+⌘←  "HEX CODE"      0x01
+⌘→  "HEX CODE"      0x05
+⌥←  "SEND ESC SEQ"  b
+⌥→  "SEND ESC SEQ"  f
