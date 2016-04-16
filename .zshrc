@@ -133,3 +133,6 @@ export NVM_DIR=~/.nvm
 #export PATH=$PATH:$ANDROID_HOME/platform-tools
 #export PATH=$PATH:$ANDROID_HOME/tools
 #source dnvm.sh
+
+# Load aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
