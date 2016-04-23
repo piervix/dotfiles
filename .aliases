@@ -6,6 +6,9 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+# Go to my dev products folder
+alias devprod="cd ~/Dev/products"
+
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
