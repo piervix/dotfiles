@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Make sure we’re using the latest Homebrew
 brew update
 
@@ -42,36 +40,43 @@ brew upgrade
 #brew install pigz
 #brew install rename
 #brew install rhino
-brew install tree
+#brew install tree
 #brew install webkit2png
 #brew install zopfli
 
 #brew tap homebrew/versions
 #brew install lua52
 
-# Install native apps
-brew tap phinze/homebrew-cask
-brew install brew-cask
+# [Old] Install native apps
+# brew tap phinze/homebrew-cask
+# brew install brew-cask
 
-function installcask() {
-	brew cask install "${@}" 2> /dev/null
-}
+# Important December 2015 update: Homebrew-Cask will now be kept up to
+# date together with Homebrew (see #15381 for details). If you haven’t yet,
+# run brew uninstall --force brew-cask; brew update to switch to the new system.
 
-#installcask dropbox
-#installcask google-chrome
-#installcask google-chrome-canary
-#installcask imagealpha
-#installcask imageoptim
-#installcask iterm2
-#installcask macvim
-#installcask miro-video-converter
-#installcask sublime-text
-#installcask the-unarchiver
-#installcask tor-browser
-#installcask transmission
-#installcask ukelele
-#installcask virtualbox
-#installcask vlc
+# To install native apps with cask
+#brew tap caskroom/cask
+
+#function brew cask install() {
+#	brew cask install "${@}" 2> /dev/null
+#}
+
+#brew cask install dropbox
+#brew cask install google-chrome
+#brew cask install google-chrome-canary
+#brew cask install imagealpha
+#brew cask install imageoptim
+#brew cask install iterm2
+#brew cask install macvim
+#brew cask install miro-video-converter
+#brew cask install sublime-text
+#brew cask install the-unarchiver
+#brew cask install tor-browser
+#brew cask install transmission
+#brew cask install ukelele
+#brew cask install virtualbox
+#brew cask install vlc
 
 # Remove outdated versions from the cellar
-brew cleanup
+#brew cleanup
