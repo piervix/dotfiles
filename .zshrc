@@ -56,6 +56,26 @@ plugins=(git osx homebrew rbenv nvm)
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# Docker
+#export DOCKER_HOST=tcp://192.168.59.103:2376
+#export DOCKER_CERT_PATH=/Users/pmadeo/.boot2docker/certs/boot2docker-vm
+#export DOCKER_TLS_VERIFY=1
+
+# Export for rbenv
+#export PATH="$HOME/.rbenv/bin:$PATH"
+
+# Export for Postgres
+#export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+
+# Android SDK from Android Studio installation
+#export ANDROID_HOME=/Users/username/Library/Android/sdk
+#export PATH=$PATH:$ANDROID_HOME/platform-tools
+#export PATH=$PATH:$ANDROID_HOME/tools
+
+# Export for nvm
+#export NVM_DIR=~/.nvm
+#. $(brew --prefix nvm)/nvm.sh
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -79,15 +99,13 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# Example aliases, you can add to .aliases too
 alias zshconf="atom ~/.zshrc"
 alias ohmyzsh="atom ~/.oh-my-zsh"
 alias sktc="sketchtool"
 
-# Docker
-#export DOCKER_HOST=tcp://192.168.59.103:2376
-#export DOCKER_CERT_PATH=/Users/pmadeo/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
+# Load other custom aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 # Prompt customization
 function virtualenv_info {
@@ -118,21 +136,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
 RPROMPT='${return_status}%{$reset_color%}'
 
-# Export for rbenv
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
-
-# Export for rbenv
-#export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Export for Postgres
-#export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
-
-# Android SDK from Android Studio installation
-#export ANDROID_HOME=/Users/username/Library/Android/sdk
-#export PATH=$PATH:$ANDROID_HOME/platform-tools
-#export PATH=$PATH:$ANDROID_HOME/tools
-#source dnvm.sh
-
-# Load aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# Load other custom executable functions
+for function in ~/.zfunctions/*; do
+  source $function
+done
