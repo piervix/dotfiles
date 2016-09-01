@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx homebrew rbenv nvm)
+plugins=(git osx brew)
 
 # User configuration
 
@@ -72,9 +72,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export PATH=$PATH:$ANDROID_HOME/platform-tools
 #export PATH=$PATH:$ANDROID_HOME/tools
 
-# Export for nvm
-#export NVM_DIR=~/.nvm
-#. $(brew --prefix nvm)/nvm.sh
+# Load other custom exports
+[[ -f ~/.exports ]] && source ~/.exports
 
 source $ZSH/oh-my-zsh.sh
 
