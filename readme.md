@@ -22,7 +22,7 @@ Aliases allow you to define shortcuts for commands (loaded by .zshrc).
 ### zfunction/*
 Commands that are too complex for an alias can become a function
 
-### .git .gitattributes .gitconfig .gitignore
+### .gitattributes .gitconfig .gitignore
 Configuration, aliases, attributes and global ignored files for Git.
 
 ### .inputrc
